@@ -43,12 +43,10 @@ cp env.example .env
 Update all required fields such as:
 
 ```
-PORT=
-MONGODB_URI=
-JWT_SECRET=
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
+DATABASE_URL=
+JWT_SECRET_KEY = 
+CLIENT_URL = http://localhost:5173/
+GOOGLE_CLIENT_ID=
 ```
 
 ---
@@ -73,9 +71,9 @@ yarn install
 ### 3. Start the Development Server
 
 ```bash
-npm run dev
+node app.js
 # or
-yarn dev
+console-ninja node --watch app.js
 ```
 
 ---
@@ -95,26 +93,6 @@ docker-compose up --build
 
 ---
 
-## 📂 Directory Structure
-
-```
-estate-backend/
-│
-├── controllers/
-├── models/
-├── routes/
-├── middlewares/
-├── utils/
-├── uploads/
-├── config/
-├── swagger/
-├── .env
-├── app.js
-├── server.js
-└── ...
-```
-
----
 
 ## 🌐 Accessing the Application
 
@@ -130,8 +108,8 @@ estate-backend/
 
 ```bash
 cd estate-frontend
-yarn install
-yarn dev
+npm install
+npm run dev
 ```
 
 ---
