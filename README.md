@@ -57,7 +57,7 @@ GOOGLE_CLIENT_ID=
 
 ```bash
 git clone https://github.com/your-username/estate-backend.git
-cd estate-backend
+cd backend
 ```
 
 ### 2. Install Dependencies
@@ -107,9 +107,17 @@ docker-compose up --build
 ### Frontend Setup
 
 ```bash
-cd estate-frontend
+cd frontend
 npm install
 npm run dev
+```
+
+### Socket Setup
+
+```bash
+cd socket
+npm install
+node app.js
 ```
 
 ---
