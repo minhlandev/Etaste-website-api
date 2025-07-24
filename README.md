@@ -96,8 +96,8 @@ docker-compose up --build
 
 ## 🌐 Accessing the Application
 
-- Frontend (if connected): `http://localhost`
-- Backend API: `http://localhost:3002`
+- Frontend (if connected): `http://localhost:5173/`
+- Backend API: `http://localhost:8800`
 - API Docs (Swagger): `http://localhost:3002/api-docs`
 
 ---
