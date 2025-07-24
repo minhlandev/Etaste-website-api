@@ -1,0 +1,133 @@
+.login {
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+
+  .formContainer {
+    flex: 3;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .inputGroup {
+        margin-bottom: 5px;
+
+        label {
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          margin-bottom: 10px;
+          color: #555;
+
+          svg {
+            margin-right: 8px;
+            color: teal;
+          }
+        }
+
+        input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 14px;
+        }
+      }
+
+      input{
+        padding: 20px;
+        border: 1px solid gray;
+        border-radius: 5px;
+      }
+
+      button{
+        display: flex; /* Sử dụng Flexbox */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+        width: 100%;
+        padding: 10px;
+        background-color: teal;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+
+        &:disabled{
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+
+      // span{
+      //   color: red;
+      //   font-size: 14px;
+      //   margin-top: 10px;
+      //   display: block;
+      // }
+
+      a{
+        font-size: 14px;
+        color: gray;
+        border-bottom: 1px solid gray;
+        width: max-content;
+      }
+    }
+  }
+
+  .imgContainer {
+    flex: 2;
+    background-color: #fcf5f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.googleLogin {
+  margin-bottom: 20px; /* Khoảng cách giữa nút Google và các phần khác */
+  display: flex;
+  justify-content: center;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa biểu tượng và chữ */
+    width: 100%;
+    max-width: 300px; /* Đặt chiều rộng tối đa */
+    padding: 10px 15px; /* Khoảng cách bên trong */
+    background-color: #4285f4; /* Màu xanh của Google */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: #357ae8; /* Màu xanh đậm hơn khi hover */
+      transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
+    }
+
+    &:active {
+      background-color: #2a65c7; /* Màu xanh đậm hơn khi nhấn */
+      transform: scale(0.95); /* Hiệu ứng thu nhỏ nhẹ khi nhấn */
+    }
+
+    svg {
+      font-size: 20px; /* Kích thước biểu tượng */
+    }
+  }
+}

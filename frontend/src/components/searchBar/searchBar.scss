@@ -1,0 +1,141 @@
+@import "../../responsive.scss";
+
+.searchBar {
+  .type {
+    display: flex; /* Sử dụng Flexbox để căn chỉnh các nút nằm ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: start; /* Căn giữa theo chiều ngang */    
+     /* Khoảng cách giữa các nút */
+
+    button {
+      padding: 16px 36px;
+      border: 1px solid #999;
+      border-bottom: none;
+      cursor: pointer;
+      background-color: white;
+      text-transform: capitalize;
+
+      &.active {
+        background-color: black;
+        color: white;
+      }
+
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-right: none;
+      }
+      &:last-child {
+        border-top-right-radius: 5px;
+        border-left: none;
+      }
+    }
+  }
+
+  form {
+    border: 1px solid #999;
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    gap: 5px;
+
+    @include sm {
+      flex-direction: column;
+      border: none;
+    }
+
+    select {
+      border: none;
+      padding: 0px 10px;
+      width: 160px;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23000000' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>") no-repeat;
+      background-position: calc(100% - 10px) center;
+      background-color: white;
+
+      @include lg {
+        padding: 0px 5px;
+        width: 140px;
+      }
+
+      @include md {
+        width: 200px;
+      }
+
+      @include sm {
+        width: auto;
+        padding: 20px;
+        border: 1px solid #999;
+      }
+
+      &:hover {
+        background-color: #f8f9fa;
+      }
+
+      option {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+
+    input {
+      border: none;
+      padding: 0px 10px;
+      width: 140px;
+
+      @include lg {
+        padding: 0px 5px;
+
+        &:nth-child(2),
+        &:nth-child(3) {
+          width: 140px;
+        }
+      }
+      @include md {
+        width: 100px;
+        &:nth-child(2),
+        &:nth-child(3) {
+          width: 100px;
+        }
+      }
+
+      @include sm {
+        width: auto;
+        &:nth-child(2),
+        &:nth-child(3) {
+          width: auto;
+        }
+        padding: 20px;
+        border: 1px solid #999;
+      }
+    }
+
+    a {
+      flex: 1;
+      background-color: #fece51;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        border: none;
+        cursor: pointer;
+        background-color: #fece51;
+        
+        @include sm {
+          padding: 10px;
+        }
+        
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &:hover {
+        background-color: darken(#fece51, 5%);
+      }
+    }
+  }
+}

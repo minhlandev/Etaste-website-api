@@ -1,0 +1,157 @@
+.footer {
+  width: 100%;
+  background-color: #485c24;
+  color: white;
+  padding: 60px 0 20px;
+  border: 2px solid #34495e;
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 0 20px;
+
+    .footer-section {
+      h3 {
+        color: #fece51;
+        font-size: 20px;
+        margin-bottom: 20px;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -8px;
+          width: 40px;
+          height: 2px;
+          background-color: #fece51;
+        }
+      }
+
+      p {
+        color: #ecf0f1;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+
+        .social-icon {
+          width: 36px;
+          height: 36px;
+          background-color: #34495e;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s;
+          color: white;
+          font-size: 18px;
+
+          &:hover {
+            background-color: #fece51;
+            transform: translateY(-3px);
+            color: #2c3e50;
+          }
+        }
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 12px;
+
+          a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+
+            &:hover {
+              color: #fece51;
+              transform: translateX(5px);
+            }
+          }
+        }
+      }
+
+      .contact-info {
+        li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 15px;
+          
+          .contact-icon {
+            font-size: 20px;
+            color: #fece51;
+            
+            /* Tăng font-size cho icon location */
+            &.location-icon {
+              font-size: 30px; /* Icon location lớn hơn */
+            }
+
+            /* Giảm font-size cho các icon khác */
+            :not(.location-icon) {
+              font-size: 20px; /* Các icon còn lại */
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #34495e;
+
+    p {
+      color: #95a5a6;
+      font-size: 14px;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .footer .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0 20px;
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+
+      .footer-section {
+        text-align: center;
+
+        h3::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+
+        .contact-info li {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,961 @@
+// @import "../../responsive.scss";
+
+// .contactPage {
+//     padding: 50px 20px;
+//     display: flex;
+//     justify-content: center;
+
+//     .container {
+//         max-width: 800px;
+//         width: 100%;
+//         background-color: #fff;
+//         padding: 40px;
+//         border-radius: 10px;
+//         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+//         h1 {
+//             margin-bottom: 10px;
+//             font-size: 32px;
+//             color: #333;
+//         }
+
+//         p {
+//             margin-bottom: 30px;
+//             font-size: 16px;
+//             color: #555;
+//         }
+
+//         form {
+//             display: flex;
+//             flex-direction: column;
+//             gap: 20px;
+
+//             .formGroup {
+//                 display: flex;
+//                 flex-direction: column;
+
+//                 label {
+//                     margin-bottom: 6px;
+//                     font-weight: 500;
+//                 }
+
+//                 input,
+//                 textarea {
+//                     padding: 12px;
+//                     border: 1px solid #ccc;
+//                     border-radius: 6px;
+//                     font-size: 16px;
+
+//                     &:focus {
+//                         border-color: teal;
+//                         outline: none;
+//                     }
+//                 }
+//             }
+
+//             button {
+//                 align-self: flex-start;
+//                 padding: 12px 24px;
+//                 background-color: teal;
+//                 color: white;
+//                 border: none;
+//                 border-radius: 6px;
+//                 font-size: 16px;
+//                 font-weight: bold;
+//                 cursor: pointer;
+//                 transition: background-color 0.3s;
+
+//                 &:hover {
+//                     background-color: #008080cc;
+//                 }
+//             }
+//         }
+//     }
+
+//     @include sm {
+//         .container {
+//             padding: 20px;
+
+//             h1 {
+//                 font-size: 24px;
+//             }
+//         }
+//     }
+// }
+
+
+
+///////////////////////////////////////////////////////////////////////2
+/// 
+// @import "../../responsive.scss";
+
+// .contactPage {
+//     padding: 50px 20px;
+//     display: flex;
+//     justify-content: center;
+//     background-color: #f8f9fa;
+
+//     .container {
+//         max-width: 1200px;
+//         width: 100%;
+
+//         .pageTitle {
+//             margin-bottom: 30px;
+//             font-size: 32px;
+//             color: #333;
+//             text-align: center;
+//             font-weight: bold;
+//         }
+
+//         .contactContent {
+//             display: grid;
+//             grid-template-columns: 1fr 1fr;
+//             gap: 24px;
+//             margin-bottom: 40px;
+
+//             @include sm {
+//                 grid-template-columns: 1fr;
+//             }
+
+//             h2 {
+//                 font-size: 24px;
+//                 font-weight: 600;
+//                 margin-bottom: 24px;
+//                 color: #333;
+//             }
+
+//             .contactInfo,
+//             .contactForm {
+//                 background-color: #fff;
+//                 padding: 24px;
+//                 border-radius: 8px;
+//                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+//             }
+
+//             // Thông tin liên hệ
+//             .contactInfo {
+//                 .infoItem {
+//                     display: flex;
+//                     align-items: flex-start;
+//                     gap: 16px;
+//                     margin-bottom: 24px;
+
+//                     .iconWrapper {
+//                         display: flex;
+//                         align-items: center;
+//                         justify-content: center;
+//                         width: 48px;
+//                         height: 48px;
+//                         border-radius: 50%;
+//                         flex-shrink: 0;
+
+//                         svg {
+//                             width: 24px;
+//                             height: 24px;
+//                         }
+//                     }
+
+//                     .mapIcon {
+//                         background-color: #fff3e0;
+//                         color: #ff9800;
+//                     }
+
+//                     .phoneIcon {
+//                         background-color: #e8f5e9;
+//                         color: #4caf50;
+//                     }
+
+//                     .emailIcon {
+//                         background-color: #e3f2fd;
+//                         color: #2196f3;
+//                     }
+
+//                     .clockIcon {
+//                         background-color: #f3e5f5;
+//                         color: #9c27b0;
+//                     }
+
+//                     .infoContent {
+//                         h3 {
+//                             font-size: 18px;
+//                             font-weight: 500;
+//                             margin-bottom: 8px;
+//                         }
+
+//                         p {
+//                             color: #555;
+//                             line-height: 1.6;
+//                         }
+
+//                         a {
+//                             color: #555;
+//                             text-decoration: none;
+//                             transition: color 0.3s;
+
+//                             &:hover {
+//                                 color: #ff9800;
+//                             }
+//                         }
+//                     }
+//                 }
+
+//                 .socialLinks {
+//                     padding-top: 16px;
+//                     border-top: 1px solid #eee;
+
+//                     h3 {
+//                         font-size: 18px;
+//                         font-weight: 500;
+//                         margin-bottom: 16px;
+//                     }
+
+//                     .socialIcons {
+//                         display: flex;
+//                         gap: 16px;
+
+//                         a {
+//                             display: flex;
+//                             align-items: center;
+//                             justify-content: center;
+//                             width: 40px;
+//                             height: 40px;
+//                             border-radius: 50%;
+//                             background-color: #f5f5f5;
+//                             color: #666;
+//                             transition: all 0.3s;
+
+//                             &:hover {
+//                                 transform: translateY(-3px);
+//                             }
+
+//                             &:nth-child(1):hover {
+//                                 background-color: #e3f2fd;
+//                                 color: #1877f2;
+//                             }
+
+//                             &:nth-child(2):hover {
+//                                 background-color: #fce4ec;
+//                                 color: #e1306c;
+//                             }
+
+//                             &:nth-child(3):hover {
+//                                 background-color: #ffebee;
+//                                 color: #ff0000;
+//                             }
+
+//                             svg {
+//                                 width: 20px;
+//                                 height: 20px;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+
+//             // Form liên hệ
+//             .contactForm {
+//                 .successMessage {
+//                     padding: 12px 16px;
+//                     background-color: #e8f5e9;
+//                     color: #2e7d32;
+//                     border-radius: 6px;
+//                     margin-bottom: 20px;
+//                     border-left: 4px solid #4caf50;
+//                 }
+
+//                 .formRow {
+//                     display: grid;
+//                     grid-template-columns: 1fr 1fr;
+//                     gap: 16px;
+//                     margin-bottom: 16px;
+
+//                     @include sm {
+//                         grid-template-columns: 1fr;
+//                         gap: 0;
+//                     }
+//                 }
+
+//                 .formGroup {
+//                     display: flex;
+//                     flex-direction: column;
+//                     margin-bottom: 16px;
+
+//                     label {
+//                         margin-bottom: 8px;
+//                         font-weight: 500;
+//                         color: #333;
+//                     }
+
+//                     input,
+//                     textarea {
+//                         padding: 12px;
+//                         border: 1px solid #ddd;
+//                         border-radius: 6px;
+//                         font-size: 16px;
+//                         transition: border-color 0.3s;
+
+//                         &:focus {
+//                             border-color: #ff9800;
+//                             outline: none;
+//                             box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.1);
+//                         }
+//                     }
+
+//                     .errorMessage {
+//                         color: #d32f2f;
+//                         font-size: 14px;
+//                         margin-top: 6px;
+//                     }
+//                 }
+
+//                 button {
+//                     display: flex;
+//                     align-items: center;
+//                     justify-content: center;
+//                     width: 100%;
+//                     padding: 14px 24px;
+//                     background-color: #ff9800;
+//                     color: white;
+//                     border: none;
+//                     border-radius: 6px;
+//                     font-size: 16px;
+//                     font-weight: 600;
+//                     cursor: pointer;
+//                     transition: background-color 0.3s;
+//                     margin-top: 8px;
+
+//                     &:hover {
+//                         background-color: #f57c00;
+//                     }
+
+//                     &:disabled {
+//                         background-color: #ffcc80;
+//                         cursor: not-allowed;
+//                     }
+
+//                     .buttonContent {
+//                         display: flex;
+//                         align-items: center;
+//                         gap: 8px;
+
+//                         svg {
+//                             width: 16px;
+//                             height: 16px;
+//                         }
+//                     }
+
+//                     .loadingButton {
+//                         display: flex;
+//                         align-items: center;
+//                         gap: 8px;
+
+//                         .spinner {
+//                             width: 16px;
+//                             height: 16px;
+//                             border: 2px solid rgba(255, 255, 255, 0.3);
+//                             border-radius: 50%;
+//                             border-top-color: #fff;
+//                             animation: spin 1s linear infinite;
+//                         }
+
+//                         @keyframes spin {
+//                             to {
+//                                 transform: rotate(360deg);
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+
+//         // Phần bản đồ
+//         .mapSection {
+//             background-color: #fff;
+//             padding: 24px;
+//             border-radius: 8px;
+//             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+//             h2 {
+//                 font-size: 24px;
+//                 font-weight: 600;
+//                 margin-bottom: 24px;
+//                 color: #333;
+//             }
+
+//             .mapWrapper {
+//                 width: 100%;
+//                 height: 400px;
+//                 border-radius: 8px;
+//                 overflow: hidden;
+//                 margin-bottom: 20px;
+//             }
+
+//             .mapInfo {
+//                 padding: 16px;
+//                 background-color: #fff3e0;
+//                 border-radius: 8px;
+//                 border: 1px solid #ffe0b2;
+
+//                 h3 {
+//                     font-size: 18px;
+//                     font-weight: 500;
+//                     margin-bottom: 8px;
+//                     color: #e65100;
+//                 }
+
+//                 p {
+//                     color: #555;
+//                     line-height: 1.6;
+//                 }
+//             }
+//         }
+//     }
+
+//     @include sm {
+//         padding: 30px 16px;
+
+//         .container {
+//             .pageTitle {
+//                 font-size: 24px;
+//                 margin-bottom: 20px;
+//             }
+
+//             .contactContent {
+//                 gap: 16px;
+//                 margin-bottom: 16px;
+//             }
+
+//             .contactInfo,
+//             .contactForm,
+//             .mapSection {
+//                 padding: 16px;
+//             }
+
+//             .mapSection {
+//                 .mapWrapper {
+//                     height: 300px;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+///////////////////////////////////////////////////////
+/// 
+@import "../../responsive.scss";
+
+.contactPage {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+
+    .container {
+        max-width: 1200px;
+        width: 100%;
+
+        .pageTitle {
+            margin-bottom: 10px;
+            font-size: 32px;
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .pageDescription {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .contactContent {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+
+            @include sm {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 24px;
+                color: #333;
+            }
+
+            .contactInfo,
+            .contactForm {
+                background-color: #fff;
+                padding: 24px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            // Thông tin liên hệ
+            .contactInfo {
+                .infoItem {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 16px;
+                    margin-bottom: 24px;
+
+                    .iconWrapper {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 50%;
+                        flex-shrink: 0;
+
+                        svg {
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }
+
+                    .mapIcon {
+                        background-color: #fff3e0;
+                        color: #ff9800;
+                    }
+
+                    .phoneIcon {
+                        background-color: #e8f5e9;
+                        color: #4caf50;
+                    }
+
+                    .emailIcon {
+                        background-color: #e3f2fd;
+                        color: #2196f3;
+                    }
+
+                    .clockIcon {
+                        background-color: #f3e5f5;
+                        color: #9c27b0;
+                    }
+
+                    .infoContent {
+                        h3 {
+                            font-size: 18px;
+                            font-weight: 500;
+                            margin-bottom: 8px;
+                        }
+
+                        p {
+                            color: #555;
+                            line-height: 1.6;
+                        }
+
+                        a {
+                            color: #555;
+                            text-decoration: none;
+                            transition: color 0.3s;
+
+                            &:hover {
+                                color: #ff9800;
+                            }
+                        }
+                    }
+                }
+
+                .supportInfo {
+                    margin-bottom: 24px;
+                    padding: 16px;
+                    background-color: #f5f5f5;
+                    border-radius: 8px;
+
+                    h3 {
+                        font-size: 18px;
+                        font-weight: 500;
+                        margin-bottom: 12px;
+                        color: #333;
+                    }
+
+                    ul {
+                        padding-left: 20px;
+
+                        li {
+                            margin-bottom: 8px;
+                            color: #555;
+                            line-height: 1.5;
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+
+                .socialLinks {
+                    padding-top: 16px;
+                    border-top: 1px solid #eee;
+
+                    h3 {
+                        font-size: 18px;
+                        font-weight: 500;
+                        margin-bottom: 16px;
+                    }
+
+                    .socialIcons {
+                        display: flex;
+                        gap: 16px;
+
+                        a {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            background-color: #f5f5f5;
+                            color: #666;
+                            transition: all 0.3s;
+
+                            &:hover {
+                                transform: translateY(-3px);
+                            }
+
+                            &:nth-child(1):hover {
+                                background-color: #e3f2fd;
+                                color: #1877f2;
+                            }
+
+                            &:nth-child(2):hover {
+                                background-color: #fce4ec;
+                                color: #e1306c;
+                            }
+
+                            &:nth-child(3):hover {
+                                background-color: #ffebee;
+                                color: #ff0000;
+                            }
+
+                            svg {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Form liên hệ
+            .contactForm {
+                .successMessage {
+                    padding: 12px 16px;
+                    background-color: #e8f5e9;
+                    color: #2e7d32;
+                    border-radius: 6px;
+                    margin-bottom: 20px;
+                    border-left: 4px solid #4caf50;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .checkIcon {
+                        width: 20px;
+                        height: 20px;
+                        color: #4caf50;
+                        flex-shrink: 0;
+                    }
+                }
+
+                .contactTypeSelector {
+                    margin-bottom: 24px;
+
+                    h3 {
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 12px;
+                    }
+
+                    .contactTypeOptions {
+                        display: flex;
+                        gap: 12px;
+                        flex-wrap: wrap;
+
+                        .contactTypeOption {
+                            flex: 1;
+                            min-width: 120px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            padding: 12px;
+                            border: 1px solid #ddd;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            transition: all 0.3s;
+
+                            &:hover {
+                                border-color: #ff9800;
+                                background-color: #fff9e6;
+                            }
+
+                            &.active {
+                                border-color: #ff9800;
+                                background-color: #fff3e0;
+                            }
+
+                            input {
+                                position: absolute;
+                                opacity: 0;
+                                cursor: pointer;
+                            }
+
+                            svg {
+                                width: 24px;
+                                height: 24px;
+                                margin-bottom: 8px;
+                                color: #ff9800;
+                            }
+
+                            span {
+                                font-size: 14px;
+                                text-align: center;
+                                color: #333;
+                            }
+                        }
+                    }
+                }
+
+                .formRow {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 16px;
+                    margin-bottom: 16px;
+
+                    @include sm {
+                        grid-template-columns: 1fr;
+                        gap: 0;
+                    }
+                }
+
+                .formGroup {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 16px;
+
+                    label {
+                        margin-bottom: 8px;
+                        font-weight: 500;
+                        color: #333;
+                    }
+
+                    input,
+                    textarea {
+                        padding: 12px;
+                        border: 1px solid #ddd;
+                        border-radius: 6px;
+                        font-size: 16px;
+                        transition: border-color 0.3s;
+
+                        &:focus {
+                            border-color: #ff9800;
+                            outline: none;
+                            box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.1);
+                        }
+                    }
+
+                    .errorMessage {
+                        color: #d32f2f;
+                        font-size: 14px;
+                        margin-top: 6px;
+                    }
+                }
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    padding: 14px 24px;
+                    background-color: #ff9800;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                    margin-top: 8px;
+
+                    &:hover {
+                        background-color: #f57c00;
+                    }
+
+                    &:disabled {
+                        background-color: #ffcc80;
+                        cursor: not-allowed;
+                    }
+
+                    .buttonContent {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+
+                        svg {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+
+                    .loadingButton {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+
+                        .spinner {
+                            width: 16px;
+                            height: 16px;
+                            border: 2px solid rgba(255, 255, 255, 0.3);
+                            border-radius: 50%;
+                            border-top-color: #fff;
+                            animation: spin 1s linear infinite;
+                        }
+
+                        @keyframes spin {
+                            to {
+                                transform: rotate(360deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Phần bản đồ
+        .mapSection {
+            background-color: #fff;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+
+            h2 {
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 24px;
+                color: #333;
+            }
+
+            .mapWrapper {
+                width: 100%;
+                height: 400px;
+                border-radius: 8px;
+                overflow: hidden;
+                margin-bottom: 20px;
+            }
+
+            .mapInfo {
+                padding: 16px;
+                background-color: #fff3e0;
+                border-radius: 8px;
+                border: 1px solid #ffe0b2;
+
+                h3 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                    color: #e65100;
+                }
+
+                p {
+                    color: #555;
+                    line-height: 1.6;
+                }
+            }
+        }
+
+        // Phần FAQ
+        .faqSection {
+            background-color: #fff;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+            h2 {
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 24px;
+                color: #333;
+            }
+
+            .faqItem {
+                padding: 16px;
+                border-bottom: 1px solid #eee;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                h3 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                    color: #333;
+                }
+
+                p {
+                    color: #555;
+                    line-height: 1.6;
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+
+    @include sm {
+        padding: 30px 16px;
+
+        .container {
+            .pageTitle {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .pageDescription {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .contactContent {
+                gap: 16px;
+                margin-bottom: 16px;
+            }
+
+            .contactInfo,
+            .contactForm,
+            .mapSection,
+            .faqSection {
+                padding: 16px;
+            }
+
+            .contactForm {
+                .contactTypeSelector {
+                    .contactTypeOptions {
+                        flex-direction: column;
+
+                        .contactTypeOption {
+                            flex-direction: row;
+                            justify-content: flex-start;
+                            gap: 12px;
+
+                            svg {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .mapSection {
+                .mapWrapper {
+                    height: 300px;
+                }
+            }
+        }
+    }
+}

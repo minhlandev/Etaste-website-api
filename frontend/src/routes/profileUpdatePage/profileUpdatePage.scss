@@ -1,0 +1,103 @@
+.profileUpdatePage {
+  height: 100%;
+  display: flex;
+
+  .formContainer {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    form {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      h1 {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Khoảng cách giữa icon và chữ */
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+
+        label {
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          gap: 8px; /* Khoảng cách giữa icon và chữ */
+          font-size: 16px;
+          font-weight: bold;
+          color: #555;
+        }
+        
+
+        input {
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 14px;
+        }
+      }
+      button {
+        display: flex;
+        align-items: center; /* Căn giữa icon và chữ theo chiều dọc */
+        justify-content: center; /* Căn giữa nội dung trong nút */
+        gap: 8px; /* Khoảng cách giữa icon và chữ */
+        background-color: teal; /* Màu nền */
+        color: white; /* Màu chữ */
+        border: none;
+        border-radius: 5px; /* Bo góc */
+        padding: 10px 15px; /* Khoảng cách bên trong nút */
+        font-size: 16px; /* Kích thước chữ */
+        font-weight: bold; /* Làm chữ đậm */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #005f5f; /* Màu nền khi hover */
+        }
+
+        svg {
+          font-size: 18px; /* Kích thước icon */
+        }
+      }
+
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .sideContainer {
+    flex: 2;
+    background-color: #fcf5f3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.profileUpdatePage .formContainer form .item label svg {
+  color: teal;
+}

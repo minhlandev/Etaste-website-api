@@ -1,0 +1,97 @@
+.featuredPosts {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h1{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin: 30px 0; // Khoảng cách trên và dưới tiêu đề
+    position: relative;
+  }
+
+  h1::after  {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: teal; // Đường gạch chân màu xanh
+    margin: 10px auto 0; // Căn giữa đường gạch chân
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    justify-content: center;
+  }
+
+  .loading,
+  .error,
+  .no-results {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+  }
+
+  @media (max-width: 900px) {
+    .list {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .list {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+.show-more-container {
+  display: flex;
+  justify-content: center; // Căn giữa nút theo chiều ngang
+  margin-top: 20px; // Khoảng cách giữa danh sách bài đăng và nút
+}
+
+.show-more {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: teal;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); // Hiệu ứng phóng to nhẹ khi hover
+  }
+
+  &:active {
+    background-color: #003f7f;
+    transform: scale(0.95); // Hiệu ứng thu nhỏ khi nhấn
+  }
+}
+
+.new-badge {
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  position: absolute;
+  top: -20px;
+  left: 0px;
+}
+.card-container {
+  position: relative;
+}
