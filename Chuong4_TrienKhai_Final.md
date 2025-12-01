@@ -76,21 +76,114 @@ MongoDB lưu trữ lịch sử dữ liệu cảm biến, kết quả chẩn đo�
 
 Node.js server cung cấp REST API cho Web Application: GET /api/node-data/:userId (lấy dữ liệu IoT node), GET /api/captures (danh sách ảnh chụp), POST /api/captures (tạo capture mới), và GET /api/diagnosis/stats (thống kê bệnh).
 
-## 4.5. Triển khai giao diện Web IoT
+## 4.5. Kết quả triển khai trên website
 
-### 4.5.1. Dashboard - Giám sát IoT realtime
+Sau khi người dùng đăng nhập thành công, website sẽ chuyển hướng người dùng tới trang Dashboard. Ở trang này, người dùng có thể quan sát được các giá trị của cảm biến trong ruộng lúa, như nhiệt độ, độ ẩm không khí, độ ẩm đất, tốc độ gió, độ pH, và cường độ ánh sáng. Các giá trị được cập nhật liên tục realtime, website sẽ lấy giá trị cảm biến gần nhất mà nó thu thập được và hiển thị lên website cho người dùng. Nhờ việc sử dụng Axios để gọi API, người dùng có thể xem dữ liệu của mình liên tục mà không cần load lại trang.
 
-Dashboard hiển thị dữ liệu từ các IoT node với 6 thẻ cảm biến:
+**Hình 4.1: Trang chủ Dashboard**
 
-Temperature Card: 30.9°C với line chart xu hướng giảm từ 32.5°C xuống 30.6°C (16:13-19:52). Humidity Card: 54.4% dao động 55-59%. Soil Moisture Card: 0.0% với 2 spike lên 80-100% (tưới nước) rồi giảm về 0. Lux Card: ánh sáng môi trường. Wind Card: tốc độ gió realtime. pH Card: độ pH đất/nước.
+### 4.5.1. Trang Dashboard - Giám sát IoT realtime
 
-### 4.5.2. Trang Upload - Phân tích ảnh
+Khi người dùng kéo xuống dưới trang chủ Dashboard, người dùng sẽ thấy được biểu đồ thể hiện 50 giá trị cảm biến gần nhất mà website thu thập được. Các giá trị thường dùng như nhiệt độ, độ ẩm không khí, độ ẩm đất sẽ được cập nhật liên tục theo thời gian thực.
 
-Trang Upload cho phép tải lên ảnh lá lúa để phân tích. Khi chọn file BLAST1_003.jpg, kết quả hiển thị: Leaf_Blast (badge đỏ), 151.97 ms (badge xanh), User_1 (badge tím), thanh tin cậy 32.35%, và bảng xác suất 4 lớp (Leaf_Blast: 32.35%, Leaf_Blight: 24.74%, Brown_Spot: 23.64%, Normal: 19.27%).
+Dashboard hiển thị dữ liệu từ Node_1 với 6 thẻ cảm biến:
 
-### 4.5.3. WebSocket - Truyền dữ liệu IoT realtime
+**Temperature Card:** Giá trị hiện tại 30.9°C (Last 50 readings) với line chart hiển thị xu hướng giảm nhẹ từ 32.5°C xuống 30.6°C trong khoảng thời gian 16:13-19:52.
 
-Hệ thống sử dụng WebSocket để truyền dữ liệu cảm biến realtime từ backend đến frontend. Dữ liệu được cập nhật mỗi 2 giây, đảm bảo người dùng luôn nhìn thấy trạng thái mới nhất của IoT node.
+**Humidity Card:** Giá trị hiện tại 54.4% với line chart dao động 55-59%, giảm xuống 54-55% ở thời điểm gần nhất.
+
+**Soil Moisture Card:** Giá trị hiện tại 0.0% với line chart cho thấy 2 spike lên 80-100% (tưới nước) rồi giảm về 0.
+
+**Lux Card:** Hiển thị dữ liệu cường độ ánh sáng môi trường theo thời gian.
+
+**Wind Speed Card:** Hiển thị tốc độ gió realtime với biểu đồ xu hướng.
+
+**pH Card:** Hiển thị độ pH của đất/nước với ngưỡng cảnh báo khi pH < 5.5 hoặc > 7.5.
+
+**Hình 4.2: Biểu đồ thể hiện thông số của các cảm biến theo thời gian thực**
+
+### 4.5.2. Trang Upload - Phân tích ảnh thủ công
+
+Trang Upload cho phép người dùng tải lên ảnh lá lúa để phân tích bệnh ngay lập tức. Người dùng có thể nhấn nút "Choose File" để chọn ảnh từ máy tính hoặc sử dụng tính năng "Reset" để xóa ảnh đã chọn.
+
+Giao diện bao gồm:
+
+- Form upload file với nút "Choose File" và "Reset"
+- Khi chọn file (BLAST1_003.jpg), ảnh được hiển thị trong panel "Selected Image"
+- Sau khi phân tích, panel "Result" hiển thị:
+  - Badge đỏ: "Leaf_Blast" - Loại bệnh được phát hiện
+  - Badge xanh: "151.97 ms" - Thời gian suy luận
+  - Badge tím: "User_1" - Người thực hiện
+  - Thanh tin cậy: 32.35% (màu xanh lá)
+  - Bảng "Class Probabilities" với 4 hàng:
+    - Leaf_Blast: 32.35% (thanh xanh dài nhất)
+    - Leaf_Blight: 24.74%
+    - Brown_Spot: 23.64%
+    - Normal: 19.27%
+  - Thông báo: "Prediction completed!"
+
+Kết quả cho thấy hệ thống phân tích ảnh thành công với thời gian phản hồi nhanh (151.97ms), hiển thị đầy đủ thông tin xác suất cho cả 4 lớp.
+
+**Hình 4.3: Chức năng upload file ảnh**
+
+**Hình 4.4: Chức năng chạy chẩn đoán**
+
+### 4.5.3. Trang Camera - Chụp ảnh realtime
+
+Trang Camera cho phép người dùng xem hình ảnh gần nhất của ruộng lúa và chụp ảnh realtime từ ruộng qua việc điều khiển Camera IMX219 trực tiếp trên website. Người dùng có thể nhấn nút "Chụp hình trực tiếp" để chụp ảnh ngay lập tức.
+
+Tính năng quan trọng tiếp theo là "Chẩn đoán bệnh lúa". Khi người dùng chọn "Chạy chẩn đoán", website gửi yêu cầu đến Flask API server trên Jetson Nano để sử dụng mô hình TensorRT. Sau khi xử lý xong, kết quả chẩn đoán sẽ được trả về và hiển thị trên website cho người dùng.
+
+Camera page hiển thị kết quả phát hiện realtime với thông tin chi tiết:
+
+- Diagnosis: Leaf_Blast
+- Confidence: 46.56%
+- Updated: 16:23:08 25/11/2025
+- GPS Location: Lat 10.8524520, Lon 106.6665280, Alt -14.50 m
+
+Environmental Data:
+- Temperature: 30.90 °C
+- Humidity: 54.20 %
+- pH: 7.60
+- Soil: 0.00 %
+- Wind: 0.00 m/s
+- Light: 5.50 lux
+
+**Hình 4.5: Chức năng chụp hình trực tiếp từ Camera IoT**
+
+### 4.5.4. Trang Auto Capture History - Lịch sử tự động
+
+Trang Auto Capture History cho phép người dùng xem lại các giá trị cảm biến và kết quả chẩn đoán từ quá khứ một cách chi tiết, hiển thị đầy đủ các giá trị cảm biến của ruộng lúa cùng với thời gian chi tiết. Tính năng lọc theo ngày, tháng, năm giúp người dùng có thể dễ dàng lọc ra những thời điểm mà mình cần một cách đơn giản.
+
+Auto Capture page hiển thị lịch sử 10 lần chụp gần nhất với thông tin đầy đủ. Dữ liệu cho thấy hệ thống hoạt động ổn định:
+
+- Nhiệt độ ổn định quanh 32.3°C
+- Độ ẩm không khí dao động 58-76%, phù hợp cho phun thuốc (>60%)
+- Tốc độ gió rất thấp (<0.1 m/s), thấp hơn ngưỡng 3 m/s
+- GPS tracking hoạt động tốt với độ chính xác cao
+
+**Hình 4.6: Trang Lịch sử Auto Capture**
+
+### 4.5.5. Tích hợp Node.js và Flask API
+
+Để tích hợp Flask API trên Jetson Nano với Node.js backend, hệ thống sử dụng thư viện Axios trong Node.js để gọi API Flask. Ví dụ mã nguồn Node.js:
+
+```javascript
+const axios = require('axios');
+
+// Gửi yêu cầu phân tích ảnh đến Flask API trên Jetson Nano
+axios.post('http://jetson-nano-ip:5000/predict', {
+  imageUrl: 'https://firebase-storage-url/image.jpg'
+})
+.then(response => {
+  console.log('Prediction:', response.data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+```
+
+Đoạn mã này sử dụng thư viện Axios trong Node.js để gửi một yêu cầu HTTP POST đến Flask API trên Jetson Nano. Yêu cầu này bao gồm một payload chứa URL của ảnh (imageUrl), được gửi tới endpoint /predict. Flask API sẽ xử lý yêu cầu, thực hiện phân tích ảnh bằng mô hình TensorRT, và trả về kết quả dự đoán. Kết quả trả về được log ra console qua response.data, trong khi các lỗi có thể xảy ra trong quá trình gửi hoặc xử lý yêu cầu sẽ được bắt và hiển thị qua console.error.
 
 ## 4.6. Triển khai hệ thống thông báo IoT
 
