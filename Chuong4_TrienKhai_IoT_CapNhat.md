@@ -8,21 +8,21 @@ Hệ thống bao gồm các thiết bị phần cứng sau:
 
 **Bảng 4.1: Thông số kỹ thuật các thành phần hệ thống**
 
-| STT | Tầng | Thiết bị | Model/Thông số kỹ thuật | Số lượng | Chức năng |
-|-----|------|----------|-------------------------|----------|-----------|
-| 1 | Tầng 1: Edge Layer | Bộ xử lý trung tâm | NVIDIA Jetson Nano 4GB RAM | 1 | Xử lý AI tại biên, điều phối hệ thống |
-| 2 | Tầng 1: Edge Layer | Camera | IMX219 8MP CSI | 1 | Thu thập hình ảnh lúa |
-| 3 | Tầng 1: Edge Layer | Vi điều khiển | Arduino Uno R3 | 1 | Đọc dữ liệu cảm biến môi trường |
-| 4 | Tầng 1: Edge Layer | Cảm biến nhiệt độ/độ ẩm | DHT22 | 1 | Đo nhiệt độ và độ ẩm không khí |
-| 5 | Tầng 1: Edge Layer | Cảm biến độ ẩm đất | Capacitive Soil Moisture | 1 | Đo độ ẩm đất |
-| 6 | Tầng 1: Edge Layer | Cảm biến ánh sáng | VEML7700 (I²C) | 1 | Đo cường độ ánh sáng |
-| 7 | Tầng 1: Edge Layer | Cảm biến gió | Hall Effect Anemometer | 1 | Đo tốc độ gió |
-| 8 | Tầng 1: Edge Layer | Cảm biến pH | Analog pH Sensor | 1 | Đo độ pH đất/nước |
-| 9 | Tầng 1: Edge Layer | Cảm biến mức nước | Float Switch XKC-Y25 | 2 | Giám sát mức thuốc trong bình |
-| 10 | Tầng 1: Edge Layer | Module GPS | GPS NEO-7M | 1 | Xác định vị trí |
-| 11 | Tầng 1: Edge Layer | Module điều khiển | ESP32 NodeMCU | 1 | Điều khiển hệ thống phun thuốc |
-| 12 | Tầng 1: Edge Layer | Driver động cơ | L298N H-Bridge | 1 | Điều khiển động cơ bơm |
-| 13 | Tầng 1: Edge Layer | Bơm nước | RS385 12VDC | 2 | Phun thuốc trừ sâu |
+| STT | Thiết bị | Model/Thông số kỹ thuật | Số lượng | Chức năng |
+|-----|----------|-------------------------|----------|-----------|
+| 1 | Bộ xử lý trung tâm | NVIDIA Jetson Nano 4GB RAM | 1 | Xử lý AI, điều phối hệ thống |
+| 2 | Camera | IMX219 8MP CSI | 1 | Thu thập hình ảnh lá lúa |
+| 3 | Vi điều khiển | Arduino Uno R3 | 1 | Đọc dữ liệu cảm biến |
+| 4 | Cảm biến nhiệt độ/độ ẩm | DHT22 | 1 | Đo nhiệt độ và độ ẩm không khí |
+| 5 | Cảm biến độ ẩm đất | Capacitive Soil Moisture | 1 | Đo độ ẩm đất |
+| 6 | Cảm biến ánh sáng | VEML7700 (I²C) | 1 | Đo cường độ ánh sáng |
+| 7 | Cảm biến gió | Hall Effect Anemometer | 1 | Đo tốc độ gió |
+| 8 | Cảm biến pH | Analog pH Sensor | 1 | Đo độ pH đất/nước |
+| 9 | Cảm biến mức nước | Float Switch XKC-Y25 | 2 | Giám sát mức thuốc |
+| 10 | Module GPS | GPS NEO-7M | 1 | Định vị vị trí |
+| 11 | Module điều khiển | ESP32 NodeMCU | 1 | Điều khiển bơm phun |
+| 12 | Driver động cơ | L298N H-Bridge | 1 | Điều khiển động cơ bơm |
+| 13 | Bơm nước | RS385 12VDC | 2 | Phun thuốc trừ sâu |
 
 Các cảm biến hoạt động ổn định với sai số không quá 2%, đảm bảo độ chính xác trong việc đo lường các yếu tố môi trường quan trọng. Hệ thống sử dụng WiFi băng tần 2.4GHz để truyền tải dữ liệu và giao tiếp giữa các thành phần. Giao tiếp UART giữa Arduino và Jetson Nano hoạt động ở tốc độ 9600 baud với tỷ lệ mất gói 0.3%.
 
