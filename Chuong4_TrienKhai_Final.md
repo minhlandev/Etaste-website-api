@@ -164,7 +164,69 @@ Auto Capture page hiển thị lịch sử 10 lần chụp gần nhất với th
 
 **Hình 4.6: Trang Lịch sử Auto Capture**
 
-### 4.5.5. Tích hợp Node.js và Flask API
+### 4.5.5. Trang Plans - Kế hoạch phun thuốc tự động
+
+Trang Plans cho phép người dùng xem và quản lý kế hoạch phun thuốc tự động được tạo bởi AI Agent (Ollama). Khi hệ thống phát hiện bệnh, AI Agent sẽ tự động phân tích dữ liệu từ Firebase feeds và tạo kế hoạch phun thuốc chi tiết.
+
+Giao diện Plans bao gồm:
+
+- Danh sách các kế hoạch phun thuốc theo ngày
+- Thông tin chi tiết mỗi kế hoạch:
+  - Loại bệnh phát hiện (Leaf_Blast, Brown_Spot, Leaf_Blight)
+  - Hành động khuyến nghị (spray - phun thuốc)
+  - Bơm sử dụng (pump 1, 2, hoặc both)
+  - Lượng thuốc cần thiết (lít)
+  - Thời gian phun (giây)
+  - Lịch phun hàng tuần
+- Nút "Thực hiện phun ngay" để điều khiển ESP32 phun thuốc
+- Nút "Chỉnh sửa lịch" để cập nhật lịch phun
+
+Ví dụ kế hoạch được hiển thị:
+
+```
+Kế hoạch ngày 15/01/2024:
+- Bệnh: Leaf_Blast
+- Độ tin cậy: 85%
+- Hành động: Phun thuốc
+- Bơm: Pump 1
+- Lượng thuốc: 20.0 lít
+- Thời gian phun: 400 giây
+- Lịch tuần: Thứ 2, Thứ 4, Thứ 6 (8:00 AM)
+```
+
+Người dùng có thể nhấn "Thực hiện ngay" để gửi lệnh phun đến ESP32 hoặc chỉnh sửa lịch phun theo nhu cầu.
+
+**Hình 4.7: Trang Plans - Kế hoạch phun thuốc tự động**
+
+### 4.5.6. Trang Settings - Cài đặt hệ thống
+
+Trang Settings cho phép người dùng cấu hình các thông số của hệ thống IoT để tối ưu hóa quá trình chăm sóc lúa. Người dùng có thể cài đặt ngưỡng cảnh báo cho các cảm biến và chế độ hoạt động của hệ thống.
+
+Các cài đặt chính:
+
+**1. Ngưỡng cảm biến:**
+- Nhiệt độ tối đa: 35°C (cảnh báo khi vượt quá)
+- Nhiệt độ tối thiểu: 25°C (cảnh báo khi thấp hơn)
+- Độ ẩm không khí tối thiểu: 60% (phù hợp cho phun thuốc)
+- Độ ẩm đất tối thiểu: 30% (cảnh báo cần tưới)
+- Tốc độ gió tối đa: 3.0 m/s (không phun khi gió mạnh)
+- pH tối ưu: 6.0 - 7.0 (cảnh báo khi ngoài khoảng)
+
+**2. Chế độ hoạt động:**
+- Chế độ tự động: Hệ thống tự động phun thuốc khi phát hiện bệnh và điều kiện phù hợp
+- Chế độ thủ công: Người dùng điều khiển bơm phun trực tiếp qua website
+- Chế độ lên lịch: Phun thuốc theo lịch đã cài đặt
+
+**3. Cài đặt thông báo:**
+- Bật/tắt email notification
+- Bật/tắt push notification
+- Bật/tắt cảnh báo bệnh tự động
+
+Người dùng có thể dễ dàng thay đổi các thông số này và nhấn nút "Lưu cài đặt" để áp dụng. Hệ thống sẽ tự động cập nhật các ngưỡng mới và hoạt động theo cấu hình đã chọn.
+
+**Hình 4.8: Trang Settings - Cài đặt hệ thống**
+
+### 4.5.7. Tích hợp Node.js và Flask API
 
 Để tích hợp Flask API trên Jetson Nano với Node.js backend, hệ thống sử dụng thư viện Axios trong Node.js để gọi API Flask. Ví dụ mã nguồn Node.js:
 
