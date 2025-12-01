@@ -2,7 +2,7 @@
 
 ## 4.1. Kết quả triển khai mô hình phần cứng
 
-Sau quá trình triển khai, nhóm đã xây dựng thành công hệ thống điều khiển bao gồm các thiết bị: NVIDIA Jetson Nano, Arduino UNO R3, ESP32 NodeMCU, Camera IMX219, DHT22 (cảm biến nhiệt độ và độ ẩm không khí), cảm biến độ ẩm đất, cảm biến ánh sáng VEML7700, máy đo gió Hall Effect, cảm biến pH, cảm biến mực nước XKC-Y25, Module L298N Driver, và hai động cơ bơm nước RS385 12VDC.
+Sau quá trình nghiên cứu và thiết kế ở Chương 3, nhóm đã tiến hành triển khai thực tế hệ thống IoT phát hiện và quản lý bệnh lúa. Hệ thống được xây dựng hoàn chỉnh bao gồm các thiết bị phần cứng: NVIDIA Jetson Nano 4GB (bộ xử lý trung tâm), Arduino UNO R3 (hub cảm biến), ESP32 NodeMCU (điều khiển actuator), Camera IMX219 8MP (thu thập hình ảnh), DHT22 (cảm biến nhiệt độ và độ ẩm không khí), cảm biến độ ẩm đất dạng Capacitive, cảm biến ánh sáng VEML7700, máy đo gió Hall Effect Anemometer, cảm biến pH analog, cảm biến mực nước XKC-Y25, Module GPS NEO-7M, Module L298N H-Bridge Driver, và hai động cơ bơm nước RS385 12VDC.
 
 **Bảng 4.1: Thông số kỹ thuật các thành phần hệ thống**
 
@@ -22,17 +22,35 @@ Sau quá trình triển khai, nhóm đã xây dựng thành công hệ thống �
 | 12 | Driver động cơ | L298N H-Bridge | 1 | Điều khiển động cơ bơm |
 | 13 | Bơm nước | RS385 12VDC | 2 | Phun thuốc trừ sâu |
 
-Các cảm biến hoạt động ổn định với sai số không quá 2%, đảm bảo độ chính xác trong việc đo lường các yếu tố môi trường quan trọng. Hệ thống sử dụng Wifi băng tần 2.4GHz để truyền tải dữ liệu và giao tiếp giữa các component. Giao tiếp UART giữa Arduino và Jetson Nano hoạt động ở tốc độ 9600 baud với tỷ lệ mất gói 0.3%.
+Sau khi lắp đặt và kiểm thử, các cảm biến hoạt động ổn định với sai số không quá 2%, đảm bảo độ chính xác trong việc đo lường các yếu tố môi trường quan trọng như nhiệt độ, độ ẩm, pH đất, và tốc độ gió. Hệ thống sử dụng mạng Wifi băng tần 2.4GHz (chuẩn IEEE 802.11 b/g/n) để truyền tải dữ liệu và giao tiếp giữa các thiết bị IoT. Giao tiếp UART giữa Arduino và Jetson Nano hoạt động ở tốc độ 9600 baud với tỷ lệ mất gói dưới 0.3%, đảm bảo độ tin cậy cao trong việc truyền dữ liệu cảm biến.
 
-Về vị trí lắp đặt: Cảm biến nhiệt độ và độ ẩm không khí DHT22 được đặt ở khu vực đại diện để đo lường các yếu tố môi trường xung quanh. Cảm biến độ ẩm đất được đặt trực tiếp trong đất ở vị trí gần gốc cây. Cảm biến ánh sáng được đặt ở vị trí không bị che khuất. Máy đo gió được lắp đặt tại vị trí cao và thông thoáng. Hai bơm được gắn với các vòi phun để phân phối thuốc trừ sâu. Camera được cố định hướng về khu vực lá cây cần giám sát.
+Về vị trí lắp đặt các thiết bị IoT: Cảm biến nhiệt độ và độ ẩm không khí DHT22 được đặt ở độ cao 1.5m tại khu vực đại diện, tránh ánh nắng trực tiếp để đo lường chính xác các yếu tố môi trường xung quanh. Cảm biến độ ẩm đất được cắm sâu 10cm trực tiếp trong đất ở vị trí gần gốc cây lúa. Cảm biến ánh sáng VEML7700 được đặt ở vị trí không bị che khuất, hướng lên trời để đo cường độ ánh sáng chính xác. Máy đo gió được lắp đặt tại vị trí cao 2m và thông thoáng để đo tốc độ gió không bị cản trở. Hai bơm phun thuốc được gắn với các vòi phun để phân phối đều thuốc trừ sâu trên diện tích ruộng. Camera IMX219 được cố định trên giá đỡ, hướng về khu vực tán lá lúa với góc nghiêng 45° để thu thập hình ảnh tối ưu.
 
 ## 4.2. Triển khai hệ thống IoT trên Jetson Nano
 
 ### 4.2.1. Cấu hình môi trường Edge Computing
 
-Jetson Nano được cài đặt Ubuntu 18.04 với JetPack 4.6, đóng vai trò là gateway IoT trung tâm. Thiết bị này xử lý dữ liệu từ các cảm biến, chạy mô hình AI tại biên (edge computing), và đồng bộ dữ liệu lên cloud.
+NVIDIA Jetson Nano được cài đặt hệ điều hành Ubuntu 18.04 LTS kèm theo JetPack SDK 4.6, đóng vai trò là gateway IoT trung tâm và thiết bị xử lý biên (edge device). Thiết bị này có nhiệm vụ thu thập và xử lý dữ liệu từ các cảm biến IoT, chạy mô hình AI phát hiện bệnh tại biên (edge computing) để giảm độ trễ, và đồng bộ dữ liệu lên cloud (Firebase Realtime Database) để người dùng có thể giám sát từ xa.
 
-Các service chính được triển khai: Flask API Server (Port 5000) xử lý inference và điều khiển thiết bị, Camera Service thu thập hình ảnh realtime, Arduino Reader đọc dữ liệu cảm biến qua UART, GPS Service thu thập tọa độ vị trí, ESP32 Controller gửi lệnh điều khiển bơm phun, và Firebase Uploader đồng bộ dữ liệu mỗi 60 giây.
+Các service chính được triển khai trên Jetson Nano bao gồm:
+
+- **Flask API Server (Port 5000):** Xử lý inference mô hình TensorRT, cung cấp REST API cho các chức năng upload ảnh, predict bệnh, điều khiển camera, và quản lý auto capture.
+
+- **Camera Service:** Thu thập hình ảnh realtime từ Camera IMX219 qua giao diện CSI, hỗ trợ chụp ảnh theo lịch tự động và theo yêu cầu từ người dùng.
+
+- **Arduino Reader Thread:** Đọc dữ liệu cảm biến liên tục từ Arduino qua giao thức UART (Serial), parse dữ liệu bằng Regular Expression và lưu vào bộ nhớ.
+
+- **GPS Service Thread:** Thu thập tọa độ vị trí (latitude, longitude, altitude) từ Module GPS NEO-7M để gắn thẻ địa lý (geo-tagging) cho mỗi ảnh chụp.
+
+- **ESP32 Controller:** Gửi lệnh điều khiển bơm phun thuốc đến ESP32 NodeMCU qua HTTP API khi phát hiện bệnh và điều kiện môi trường phù hợp.
+
+- **Firebase Uploader Thread:** Đồng bộ dữ liệu cảm biến, GPS, và kết quả chẩn đoán lên Firebase Realtime Database mỗi 60 giây để cập nhật realtime cho web application.
+
+- **Capture Listener Thread:** Lắng nghe yêu cầu chụp ảnh từ Firebase, tự động chụp ảnh, chạy inference, và upload kết quả lên Firebase Storage.
+
+- **Spray Listener Thread:** Lắng nghe lệnh phun thuốc từ Firebase, gọi ESP32 API để thực hiện phun thuốc tự động.
+
+- **AI Agent Thread (Ollama):** Phân tích dữ liệu từ Firebase feeds, tạo kế hoạch phun thuốc tự động dựa trên kết quả phát hiện bệnh và điều kiện môi trường.
 
 ### 4.2.2. Triển khai và tối ưu mô hình AI
 
